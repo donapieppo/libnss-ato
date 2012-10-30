@@ -1,0 +1,16 @@
+libnss-ato (0.2-1) unstable; urgency=low
+
+  * strip \n from group read in /etc/libnss-ato.conf (thanks Kyler Laird)
+
+  -- Pietro Donatini <donatini@dm.unibo.it>  Tue Sep  1 14:27:10 CEST 2009
+
+libnss-ato (0.1-1) unstable; urgency=low
+
+  * initial release
+
+ -- Pietro Donatini <donatini@dm.unibo.it>  Thu, 22 Mar 2007 13:07:25 +0100
+
+
+
+
+

@@ -1,0 +1,14 @@
+Source: libnss-ato
+Maintainer: Pietro Donatini
+Section: admin
+Priority: standard
+Standards-Version: 0.2
+Build-Depends: 
+
+Package: libnss-ato
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, debianutils (>= 1.8)
+Description: NSS module to match all request of unknown user to a single user (All To One)
+ .
+  Homepage: http://www.dm.unibo.it/~donatini
+

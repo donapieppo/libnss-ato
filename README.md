@@ -25,6 +25,24 @@ for every query of a random username not present in /etc/passwd.
 Why?
 =========
 
-This module can be used for pubblic workstations where you only need to verify username / password from a pam module (for example pam-krb5 for Active Directory users) and there is no need to give the user his own uid gid homedir
+This module can be used for pubblic workstations where you only need to verify username / password from a pam module (for example pam-krb5 for Active Directory users) and there is no need to give the user his own uid, gid or homedir
 
+Installation
+=========
+
+From source just make and make install.
+
+The only configuration file is /etc/libnss-ato.conf which consists of one line in the passwd format. For example
+
+```console
+test_user:x:1000:1000:Test User,:/home/test:/bin/bash
+```
+
+An example /etc/nsswitch.conf to make use of libnss-ato
+
+```console
+passwd:         files ato
+group:          files
+shadow:         files ato
+```
 

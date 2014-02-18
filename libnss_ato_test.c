@@ -6,12 +6,19 @@
 
 struct spwd *getspnam(const char *name);
 
-int main (){
+int main (int argc, char *argv[]){
 
 	struct passwd *p;
 	struct spwd *s;
 
-	if (!(p=getpwnam("pippo.pluto"))) {
+	char *usern="pippo.pluto";
+	
+	if(argc ==2)
+	{
+		usern=argv[1];
+	}
+
+	if (!(p=getpwnam(usern))) {
 		return -1;
 	}
 	
@@ -23,7 +30,7 @@ int main (){
 
 	printf("FROM SHADOW:\n");
 
-	if (!(s = getspnam("pippo.pluto"))) {
+	if (!(s = getspnam(usern))) {
 		return -1;
 	}
 

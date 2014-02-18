@@ -25,10 +25,10 @@ manprefix =
 all:	libnss_ato libnss_ato_test 
 
 libnss_ato:	libnss_ato.c
-	${CC} -Wall -shared -o libnss_ato.so.2 -Wl,-soname,libnss_ato.so.2 libnss_ato.c
+	${CC} -fPIC -Wall -shared -o libnss_ato.so.2 -Wl,-soname,libnss_ato.so.2 libnss_ato.c
 
 test:	libnss_ato_test.c
-	${CC} -Wall -o libnss_ato_test libnss_ato_test.c
+	${CC} -fPIC -Wall -o libnss_ato_test libnss_ato_test.c
 
 install:	
 	# remeber  /lib/libnss_compat.so.2 -> libnss_compat-2.3.6.so

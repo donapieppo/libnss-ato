@@ -38,6 +38,8 @@ The only configuration file is `/etc/libnss-ato.conf` which consists of one line
 test_user:x:1000:1000:Test User,:/home/test:/bin/bash
 ```
 
+Only the first line of the file `/etc/libnss-ato.conf` is parsed.
+
 Here an example of the system file `/etc/nsswitch.conf` to make use of libnss-ato:
 
 ```console

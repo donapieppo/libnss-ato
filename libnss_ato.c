@@ -60,7 +60,7 @@ struct spwd
 	long sp_warn;           #days before pwd expires to warn user to change it
 	long sp_inact;          #days after pwd expires until account is disabled
 	long sp_expire;         #days since 1970-01-01 until account is disabled 
-	unsigned long sp_flag;  Reserved 
+	unsigned long sp_flag;  Reserved for future use
 };
 
 */
@@ -112,7 +112,8 @@ free_conf(ato_conf_t *conf)
 /*
  * the configuration /etc/libnss-ato.conf is just one line
  * whith the local user data as in /etc/passwd. For example:
- * dona:x:1001:1001:P D ,,,:/home/dona:/bin/bash 
+ * dona:x:1001:1001:P D ,,,:/home/dona:/bin/bash
+ * Extra lines are comments (not processed).
  */
 
 ato_conf_t *
@@ -247,7 +248,7 @@ read_conf()
  * are the pointers passed in by the C library to the _nss_ntdom_*
  * functions. 
  *
- *  Taken fron glibc 
+ *  Taken from glibc 
  */
 
 static char * 

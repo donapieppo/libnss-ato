@@ -34,7 +34,7 @@
 
 /*
  * the configuration /etc/libnss-ato.conf is just one line
- * whith the local user data as in /etc/passwd. For example:
+ * with the local user data as in /etc/passwd. For example:
  * dona:x:1001:1001:P D ,,,:/home/dona:/bin/bash
  * Extra lines are comments (not processed).
  */

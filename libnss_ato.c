@@ -137,11 +137,11 @@ _nss_ato_getspnam_r( const char *name,
 
         strcpy(s->sp_namp, name);
 
-        if ((s->sp_pwdp = get_static(&buffer, &buflen, strlen("!") + 1)) == NULL) {
+        if ((s->sp_pwdp = get_static(&buffer, &buflen, strlen("*") + 1)) == NULL) {
                 return NSS_STATUS_TRYAGAIN;
         }
 
-        strcpy(s->sp_pwdp, "!");
+        strcpy(s->sp_pwdp, "*");
 
         s->sp_lstchg = 13571;
         s->sp_min    = 0;

@@ -25,43 +25,12 @@
 #include <pwd.h>
 #include <shadow.h>
 #include <string.h>
-#include <stdlib.h>
 #include <stdio.h>
 
 /* for security reasons */
 #define MIN_UID_NUMBER   500
 #define MIN_GID_NUMBER   500
 #define CONF_FILE "/etc/libnss-ato.conf"
-
-/* 
- * The passwd structure in <pwd.h>
-struct passwd
-{
-	char *pw_name;                Username. 
-	char *pw_passwd;              Password. 
-	__uid_t pw_uid;               User ID. 
-	__gid_t pw_gid;               Group ID.
-	char *pw_gecos;               Real name.
-	char *pw_dir;                 Home directory.
-	char *pw_shell;               Shell program. 
-};
-
-shadow passwd structure in <shadow.h>
-
-struct spwd 
-{
-	char *sp_namp;          Login name 
-	char *sp_pwdp;          Encrypted password 
-	long sp_lstchg;         Date of last change
-	long sp_min;            Min #days between changes
-	long sp_max;            Max #days between changes
-	long sp_warn;           #days before pwd expires to warn user to change it
-	long sp_inact;          #days after pwd expires until account is disabled
-	long sp_expire;         #days since 1970-01-01 until account is disabled 
-	unsigned long sp_flag;  Reserved for future use
-};
-
-*/
 
 /*
  * the configuration /etc/libnss-ato.conf is just one line

@@ -134,6 +134,7 @@ _nss_ato_getpwnam_r( const char *name,
 		return NSS_STATUS_NOTFOUND;
 	}
 
+	*p = *conf;
 
 	/* If out of memory */
 	if ((p->pw_name = get_static(&buffer, &buflen, strlen(name) + 1)) == NULL) {
@@ -148,27 +149,6 @@ _nss_ato_getpwnam_r( const char *name,
         }
 
 	strcpy(p->pw_passwd, "x");
-
-        p->pw_uid = conf->pw_uid; /* UID_NUMBER; */
-        p->pw_gid = conf->pw_gid; /* GID_NUMBER; */
-
-	if ((p->pw_gecos = get_static(&buffer, &buflen, strlen(conf->pw_gecos) + 1 )) == NULL) {
-                return NSS_STATUS_TRYAGAIN;
-        }
-
-        strcpy(p->pw_gecos, conf->pw_gecos);
-
-	if ((p->pw_dir = get_static(&buffer, &buflen, strlen(conf->pw_dir) + 1 )) == NULL) {
-                return NSS_STATUS_TRYAGAIN;
-        }
-
-        strcpy(p->pw_dir, conf->pw_dir);
-
-	if ((p->pw_shell = get_static(&buffer, &buflen, strlen(conf->pw_shell) + 1 )) == NULL) {
-                return NSS_STATUS_TRYAGAIN;
-        }
-
-        strcpy(p->pw_shell, conf->pw_shell);
 
 	return NSS_STATUS_SUCCESS;
 }

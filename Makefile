@@ -34,7 +34,7 @@ install:
 	# remeber  /lib/libnss_compat.so.2 -> libnss_compat-2.3.6.so
 	${INSTALL_DATA} libnss_ato.so.2 ${prefix}/lib/libnss_ato-2.3.6.so
 	${INSTALL_DATA} libnss-ato.3 ${prefix}/usr/share/man/man3
-	cd /lib && ln -fs libnss_ato-2.3.6.so libnss_ato.so.2
+	cd ${prefix}/lib && ln -fs libnss_ato-2.3.6.so libnss_ato.so.2
 
 clean:
 	rm -f libnss_ato.so.2 libnss_ato_test

@@ -12,10 +12,8 @@ build: build-stamp
 build-stamp:
 	dh_testdir
 
-	# ci sarebbe configure 
-	
 	# Add here commands to compile the package.
-	#$(MAKE)
+	$(MAKE)
 
 	touch build-stamp
 
@@ -38,7 +36,6 @@ install: build
 
 	# Add here commands to install the package into debian/<packagename>
 	$(MAKE) prefix=`pwd`/debian/`dh_listpackages` install
-	(cd `pwd`/debian/`dh_listpackages`/lib; ln -s libnss_ato-2.3.6.so libnss_ato.so.2)
 
 # Build architecture-independent files here.
 binary-indep: build install

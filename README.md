@@ -29,7 +29,7 @@ This module can be used for pubblic workstations where you only need to verify u
 
 Installation
 =========
-
+#From source:
 From source just make and make install.
 
 The only configuration file is `/etc/libnss-ato.conf` which consists of one line in the passwd format. For example:
@@ -47,10 +47,17 @@ passwd:         files ato
 group:          files
 shadow:         files ato
 ```
+# From Debian packages
 
-For debian packages, run the following
+To build the Debian packages, run the following
 ```console
 fakeroot debian/rules binary
 ```
 
-This should create the correct .deb in the home directory
+This should create the correct `.deb` in the parent directory
+
+This package can then be installed as with any other package:
+```console
+sudo dpkg -i <package_name>
+```
+You will then need to configure the `/etc/libnss-ato.conf` file, as above

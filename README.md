@@ -25,7 +25,7 @@ for every query of a random username not present in /etc/passwd.
 Why?
 =========
 
-This module can be used for pubblic workstations where you only need to verify username / password from a pam module (for example pam-krb5 for Active Directory users) and there is no need to give the user his own uid, gid or homedir
+This module can be used for pubblic workstations where you only need to verify username / password from a pam module (for example pam-krb5 for Active Directory users) and there is no need to give the user his own uid, gid or homedir.
 
 Installation from source
 =========
@@ -49,15 +49,14 @@ shadow:         files ato
 
 Installation from Debian packages
 =========
-To build the Debian packages, run the following
+To build the Debian packages, run the following:
 ```console
 fakeroot debian/rules binary
 ```
-
-This should create the correct `.deb` in the parent directory
+This should create the correct `.deb` in the parent directory.
 
 This package can then be installed as with any other package:
 ```console
 sudo dpkg -i <package_name>
 ```
-You will then need to configure the `/etc/libnss-ato.conf` file, as above
+You will then need to modify the config files, as above.

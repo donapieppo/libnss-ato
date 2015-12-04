@@ -48,3 +48,9 @@ group:          files
 shadow:         files ato
 ```
 
+For debian packages, run the following
+```console
+fakeroot debian/rules binary
+```
+
+This should create the correct .deb in the home directory

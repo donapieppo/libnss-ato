@@ -27,9 +27,8 @@ Why?
 
 This module can be used for pubblic workstations where you only need to verify username / password from a pam module (for example pam-krb5 for Active Directory users) and there is no need to give the user his own uid, gid or homedir
 
-Installation
+Installation from source
 =========
-#From source:
 From source just make and make install.
 
 The only configuration file is `/etc/libnss-ato.conf` which consists of one line in the passwd format. For example:
@@ -47,8 +46,9 @@ passwd:         files ato
 group:          files
 shadow:         files ato
 ```
-# From Debian packages
 
+Installation from Debian packages
+=========
 To build the Debian packages, run the following
 ```console
 fakeroot debian/rules binary

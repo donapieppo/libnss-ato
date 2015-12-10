@@ -34,7 +34,7 @@ From source just make and make install.
 The only configuration file is `/etc/libnss-ato.conf` which consists of one line in the passwd format. For example:
 
 ```console
-test_user:x:1000:1000:Test User,:/home/test:/bin/bash
+test_user:x:1000:1000:Test User:/home/test:/bin/bash
 ```
 
 Only the first line of the file `/etc/libnss-ato.conf` is parsed.

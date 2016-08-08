@@ -40,5 +40,8 @@ clean:
 	rm -f libnss_ato.so.2 libnss_ato_test
 	rm -rf debian/libnss-ato
 	rm -f build-stamp
+	rm -rf BUILD BUILDROOT RPMS SRPMS SOURCES SPECS
 
-
+rpm: libnss_ato
+	rm -rf BUILD BUILDROOT RPMS SRPMS SOURCES SPECS
+	rpmbuild -ba rpm/libnss-ato.spec --define "_topdir $$(pwd)"

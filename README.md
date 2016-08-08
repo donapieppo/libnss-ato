@@ -60,3 +60,17 @@ This package can then be installed as with any other package:
 sudo dpkg -i <package_name>
 ```
 You will then need to modify the config files, as above.
+
+Installation from CentOS packages
+=========
+To build the CentOS packages, run the following:
+```console
+make rpm
+```
+This should create the correct `.rpm` in the parent directory.
+
+This package can then be installed as with any other package:
+```console
+sudo yum install <package_name>
+```
+You will then need to modify the config files, as above.

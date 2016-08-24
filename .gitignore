@@ -1,3 +1,9 @@
 /libnss_ato.so.2
 /libnss_ato_test
 /build-stamp
+/BUILD/
+/BUILDROOT/
+/RPMS/
+/SRPMS/
+/SOURCES/
+/SPECS/

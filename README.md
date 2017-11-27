@@ -37,7 +37,8 @@ The only configuration file is `/etc/libnss-ato.conf` which consists of one line
 test_user:x:1000:1000:Test User:/home/test:/bin/bash
 ```
 
-Only the first line of the file `/etc/libnss-ato.conf` is parsed.
+Only the first line of the file `/etc/libnss-ato.conf` is parsed and the 
+uid number (1000 in this example) must be the one of a real user in the system.
 
 Here an example of the system file `/etc/nsswitch.conf` to make use of libnss-ato:
 
@@ -46,7 +47,9 @@ passwd:         files ato
 group:          files
 shadow:         files ato
 ```
-(If you have an nscd service running, please reload after changing `/etc/nsswitch.conf`).
+
+If you have an nscd service running, please reload it after the changes in the file
+`/etc/nsswitch.conf`.
 
 Installation from Debian packages
 =========

@@ -46,6 +46,7 @@ passwd:         files ato
 group:          files
 shadow:         files ato
 ```
+(If you have an nscd service running, please reload after changing `/etc/nsswitch.conf`).
 
 Installation from Debian packages
 =========

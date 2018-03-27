@@ -7,7 +7,7 @@
  * Copyright (c) Pietro Donatini (pietro.donatini@unibo.it), 2007.
  *
  * this product may be distributed under the terms of
- * the GNU Lesser Public License.
+ * the GNU Lesser General Public License.
  *
  * version 0.2 
  * 

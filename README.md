@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/donapieppo/libnss-ato.svg?branch=master)](https://travis-ci.org/donapieppo/libnss-ato)
+
 libnss-ato (Name Service Switch module All-To-One)
 ==========
 

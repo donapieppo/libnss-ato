@@ -1,0 +1,14 @@
+language: c
+sudo: false
+
+script:
+  - make
+
+matrix:
+  include:
+  - os: linux
+    compiler: gcc
+  - os: linux
+    compiler: clang
+
+

@@ -10,5 +10,5 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, debianutils (>= 1.8)
 Description: NSS module to match all request of unknown user to a single user (All To One)
  .
-  Homepage: http://www.dm.unibo.it/~donatini
+  Homepage: https://github.com/donapieppo/libnss-ato
 

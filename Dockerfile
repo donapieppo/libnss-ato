@@ -8,9 +8,11 @@ WORKDIR /root
 COPY . .
 
 RUN useradd -ms /bin/bash testuser
+RUN echo "t:x:1000:1000:Test User:/home/test:/bin/bash" > /etc/libnss-ato.conf 
+
 
 # docker build -t libnss-ato .
 # docker run -it libnss-ato  /bin/bash
 # and then make && make install
-# echo "test_user:x:1000:1000:Test User:/home/test:/bin/bash" > /etc/libnss-ato.conf and add ato to /etc/nsswitch.conf
+# add ato to /etc/nsswitch.conf
  

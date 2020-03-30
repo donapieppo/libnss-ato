@@ -30,6 +30,7 @@
 /* for security reasons */
 #define MIN_UID_NUMBER   500
 #define MIN_GID_NUMBER   500
+#define BAD_CHARS ":"
 #define CONF_FILE "/etc/libnss-ato.conf"
 
 /*
@@ -39,7 +40,7 @@
  * Extra lines are comments (not processed).
  */
 
-struct passwd *
+	struct passwd *
 read_conf() 
 {
 	FILE *fd;
@@ -68,13 +69,13 @@ read_conf()
  *  Taken from glibc 
  */
 
-static char * 
+	static char * 
 get_static(char **buffer, size_t *buflen, int len)
 {
 	char *result;
 
 	/* Error check.  We return false if things aren't set up right, or
-         * there isn't enough buffer space left. */
+	 * there isn't enough buffer space left. */
 
 	if ((buffer == NULL) || (buflen == NULL) || (*buflen < len)) {
 		return NULL;
@@ -90,17 +91,24 @@ get_static(char **buffer, size_t *buflen, int len)
 }
 
 
-enum nss_status
+	enum nss_status
 _nss_ato_getpwnam_r( const char *name, 
-	   	     struct passwd *p, 
-	             char *buffer, 
-	             size_t buflen, 
-	             int *errnop)
+		struct passwd *p, 
+		char *buffer, 
+		size_t buflen, 
+		int *errnop)
 {
 	struct passwd *conf;
-  
+
 	if ((conf = read_conf()) == NULL) {
 		return NSS_STATUS_NOTFOUND;
+	}
+
+	int len = strlen(BAD_CHARS);
+	for (int i=0; i<len; i++) {
+		if (strchr(name, BAD_CHARS[i]) != NULL) {
+			return NSS_STATUS_NOTFOUND;
+		}
 	}
 
 	*p = *conf;
@@ -114,39 +122,39 @@ _nss_ato_getpwnam_r( const char *name,
 	strcpy(p->pw_name, name);
 
 	if ((p->pw_passwd = get_static(&buffer, &buflen, strlen("x") + 1)) == NULL) {
-                return NSS_STATUS_TRYAGAIN;
-        }
+		return NSS_STATUS_TRYAGAIN;
+	}
 
 	strcpy(p->pw_passwd, "x");
 
 	return NSS_STATUS_SUCCESS;
 }
 
-enum nss_status
+	enum nss_status
 _nss_ato_getspnam_r( const char *name,
-                     struct spwd *s,
-                     char *buffer,
-                     size_t buflen,
-                     int *errnop)
+		struct spwd *s,
+		char *buffer,
+		size_t buflen,
+		int *errnop)
 {
 
-        /* If out of memory */
-        if ((s->sp_namp = get_static(&buffer, &buflen, strlen(name) + 1)) == NULL) {
-                return NSS_STATUS_TRYAGAIN;
-        }
+	/* If out of memory */
+	if ((s->sp_namp = get_static(&buffer, &buflen, strlen(name) + 1)) == NULL) {
+		return NSS_STATUS_TRYAGAIN;
+	}
 
-        strcpy(s->sp_namp, name);
+	strcpy(s->sp_namp, name);
 
-        if ((s->sp_pwdp = get_static(&buffer, &buflen, strlen("*") + 1)) == NULL) {
-                return NSS_STATUS_TRYAGAIN;
-        }
+	if ((s->sp_pwdp = get_static(&buffer, &buflen, strlen("*") + 1)) == NULL) {
+		return NSS_STATUS_TRYAGAIN;
+	}
 
-        strcpy(s->sp_pwdp, "*");
+	strcpy(s->sp_pwdp, "*");
 
-        s->sp_lstchg = 13571;
-        s->sp_min    = 0;
-        s->sp_max    = 99999;
-        s->sp_warn   = 7;
+	s->sp_lstchg = 13571;
+	s->sp_min    = 0;
+	s->sp_max    = 99999;
+	s->sp_warn   = 7;
 
-        return NSS_STATUS_SUCCESS;
+	return NSS_STATUS_SUCCESS;
 }

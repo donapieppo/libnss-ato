@@ -32,4 +32,4 @@ ln -s /lib64/libnss_ato.so.2 %{buildroot}/lib64/libnss_ato-2.3.6.so
 /lib64/libnss_ato.so.2
 /lib64/libnss_ato-2.3.6.so
 %config(noreplace) /etc/libnss-ato.conf
-/usr/share/man/man3/libnss-ato.3.gz
+/usr/share/man/man3/libnss-ato.3

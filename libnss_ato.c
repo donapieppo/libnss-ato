@@ -9,16 +9,16 @@
  * this product may be distributed under the terms of
  * the GNU Lesser General Public License.
  *
- * version 0.2 
- * 
+ * version 0.2
+ *
  * CHANGELOG:
- * strip end of line in reading /etc/libnss-ato 
+ * strip end of line in reading /etc/libnss-ato
  * suggested by Kyler Laird
  *
  * TODO:
  *
  * check bugs
- * 
+ *
  */
 
 #include <nss.h>
@@ -40,8 +40,8 @@
  * Extra lines are comments (not processed).
  */
 
-	struct passwd *
-read_conf() 
+struct passwd *
+read_conf(void)
 {
 	FILE *fd;
 	struct passwd *conf;
@@ -61,15 +61,15 @@ read_conf()
 	return conf;
 }
 
-/* 
+/*
  * Allocate some space from the nss static buffer.  The buffer and buflen
  * are the pointers passed in by the C library to the _nss_ntdom_*
- * functions. 
+ * functions.
  *
- *  Taken from glibc 
+ *  Taken from glibc
  */
 
-	static char * 
+static char *
 get_static(char **buffer, size_t *buflen, int len)
 {
 	char *result;
@@ -90,12 +90,11 @@ get_static(char **buffer, size_t *buflen, int len)
 	return result;
 }
 
-
-	enum nss_status
-_nss_ato_getpwnam_r( const char *name, 
-		struct passwd *p, 
-		char *buffer, 
-		size_t buflen, 
+enum nss_status
+_nss_ato_getpwnam_r( const char *name,
+		struct passwd *p,
+		char *buffer,
+		size_t buflen,
 		int *errnop)
 {
 	struct passwd *conf;
@@ -130,14 +129,13 @@ _nss_ato_getpwnam_r( const char *name,
 	return NSS_STATUS_SUCCESS;
 }
 
-	enum nss_status
+enum nss_status
 _nss_ato_getspnam_r( const char *name,
 		struct spwd *s,
 		char *buffer,
 		size_t buflen,
 		int *errnop)
 {
-
 	/* If out of memory */
 	if ((s->sp_namp = get_static(&buffer, &buflen, strlen(name) + 1)) == NULL) {
 		return NSS_STATUS_TRYAGAIN;

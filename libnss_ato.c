@@ -120,7 +120,7 @@ _nss_ato_getpwnam_r( const char *name,
 	/* pw_name stay as the name given */
 	strcpy(p->pw_name, name);
 
-	if ((p->pw_passwd = get_static(&buffer, &buflen, strlen("x") + 1)) == NULL) {
+	if ((p->pw_passwd = get_static(&buffer, &buflen, (int)sizeof("x"))) == NULL) {
 		return NSS_STATUS_TRYAGAIN;
 	}
 
@@ -143,7 +143,7 @@ _nss_ato_getspnam_r( const char *name,
 
 	strcpy(s->sp_namp, name);
 
-	if ((s->sp_pwdp = get_static(&buffer, &buflen, strlen("*") + 1)) == NULL) {
+	if ((s->sp_pwdp = get_static(&buffer, &buflen, (int)sizeof("*"))) == NULL) {
 		return NSS_STATUS_TRYAGAIN;
 	}
 

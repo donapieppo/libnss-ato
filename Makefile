@@ -19,7 +19,7 @@ sysconfdir = /etc
 
 # mandir = /usr/local/src/less-394/debian/less/usr/share/man
 manext = 1
-manprefix =
+manprefix = ${prefix}/share/man
 
 #### End of system configuration section. ####
 
@@ -34,7 +34,7 @@ test:	libnss_ato_test.c
 install:
 	# remeber  /lib/libnss_compat.so.2 -> libnss_compat-2.3.6.so
 	${INSTALL_DATA} libnss_ato.so.2 ${DESTDIR}/${prefix}/lib/libnss_ato-2.3.6.so
-	${INSTALL_DATA} libnss-ato.3 ${DESTDIR}/${prefix}/share/man/man3
+	${INSTALL_DATA} libnss-ato.3 ${DESTDIR}/${manprefix}/man3
 	cd ${DESTDIR}/${prefix}/lib && ln -fs libnss_ato-2.3.6.so libnss_ato.so.2
 
 clean:

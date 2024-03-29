@@ -1,0 +1,17 @@
+name: libnss-ato CI
+
+on: [pull_request, push, workflow_dispatch]
+
+jobs:
+    basic-sanity:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - name: build container
+              working-directory: ${{ github.workspace }}
+              run: |
+                docker build -t libnss-ato -f ci/Dockerfile .
+            - name: run tests in container
+              working-directory: ${{ github.workspace }}
+              run: |
+                docker run --security-opt seccomp:unconfined --rm -v$(pwd):/build -w/build libnss-ato ./ci/docker-entrypoint.sh

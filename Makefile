@@ -33,9 +33,10 @@ test:	libnss_ato_test.c
 
 install:
 	# remeber  /lib/libnss_compat.so.2 -> libnss_compat-2.3.6.so
-	${INSTALL_DATA} libnss_ato.so.2 ${DESTDIR}/${prefix}/lib/libnss_ato-2.3.6.so
-	${INSTALL_DATA} libnss-ato.3 ${DESTDIR}/${manprefix}/man3
+	${INSTALL_DATA} -D libnss_ato.so.2 ${DESTDIR}/${prefix}/lib/libnss_ato-2.3.6.so
+	${INSTALL_DATA} -D libnss-ato.3 ${DESTDIR}/${manprefix}/man3/libnss-ato.3
 	cd ${DESTDIR}/${prefix}/lib && ln -fs libnss_ato-2.3.6.so libnss_ato.so.2
+	${INSTALL_DATA} -D libnss-ato.conf ${DESTDIR}/${sysconfdir}/libnss-ato.conf
 
 clean:
 	rm -f libnss_ato.so.2 libnss_ato_test

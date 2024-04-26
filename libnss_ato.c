@@ -49,7 +49,10 @@ read_conf(void)
 	if ((fd = fopen(CONF_FILE, "r")) == NULL ) {
 		return NULL;
 	}
+
 	conf = fgetpwent(fd);
+    if (conf == NULL)
+        goto end;
 
 	if ( conf->pw_uid < MIN_UID_NUMBER )
 		conf->pw_uid = MIN_UID_NUMBER;
@@ -57,6 +60,7 @@ read_conf(void)
 	if ( conf->pw_gid < MIN_GID_NUMBER )
 		conf->pw_gid = MIN_GID_NUMBER;
 
+end:
 	fclose(fd);
 	return conf;
 }

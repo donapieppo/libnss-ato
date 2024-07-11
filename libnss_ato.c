@@ -45,6 +45,7 @@ read_conf(void)
 {
 	FILE *fd;
 	struct passwd *conf;
+	struct passwd *conf2;
 
 	if ((fd = fopen(CONF_FILE, "r")) == NULL ) {
 		return NULL;
@@ -62,7 +63,14 @@ read_conf(void)
 
 end:
 	fclose(fd);
-	return conf;
+
+	/* Now we've got the UID to match to, get the full entry from
+	 * /etc/passwd. This means we don't need to specify the right home directory in
+	 * our conf file. */
+
+	conf2 = getpwuid(conf->pw_uid);
+
+	return conf2;
 }
 
 /*
